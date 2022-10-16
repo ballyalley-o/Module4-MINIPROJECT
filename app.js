@@ -1,7 +1,8 @@
 
 
 const API_URL = "https://api.punkapi.com/v2/beers/random";
-const API_URL_PUSH = "https://api.punkapi.com/v2/beers";
+const API_URL_PULL = "https://api.punkapi.com/v2/beers?page=1&per_page=80";
+const API_URL_PUSH = "https://api.punkapi.com/v2/beers?page=2&per_page=80";
 
 //tabs
 const tabs = document.querySelectorAll('[data-tab-target]')
@@ -67,27 +68,43 @@ document.addEventListener("DOMContentLoaded", () => {
   //sticky hamby
 
   window.addEventListener("scroll", function () {
-    let patty = document.querySelector(".hamburger");
+    let patty = document.querySelector(".mobile-nav");
     patty.classList.toggle("sticky", window.scrollY > 0);
   });
+
 
   //chart m1
   const yearArrX = [];
   const monthArrY = [];
   const alchArrR = [];
   const nameArr = [];
+  let tableName = [];
+
 
   beerChart();
 
   async function beerChart() {
     await beerForChart();
-    const ctx = document.getElementById("chart");
-    const myChart = new Chart(ctx, {
+    const ctx = document.getElementById("chart").getContext('2d');
+    const chart = new Chart(ctx, {
       type: "scatter",
       options: {
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function() {
+                var label = nameArr;
+                for (var i = 0; i < nameArr.length; i++) {
+                return label[i];
+              }
+            },
+          },
+        },
+      },
         scales: {
           x: {
             type: "time",
+            position: "bottom",
             time: {
               unit: "year",
             },
@@ -95,13 +112,13 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       },
       data: {
-        labels: yearArrX,
+      labels: yearArrX,
         datasets: [
           {
             label: "Year Established",
             data: monthArrY,
             backgroundColor: "#0D0D0D",
-            borderWidth: 1,
+            borderWidth: 5,
           },
         ],
       },
@@ -110,11 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function beerForChart() {
     const response = await fetch(API_URL_PUSH);
-    const data = await response.json();
+    let data = await response.json();
 
     data.forEach((row) => {
 
-      const tableName = row.name;
+      tableName = row.name;
       const tableDate = row.first_brewed;
       const dateSplit = tableDate.split("/");
       const tableYear = dateSplit[1];
@@ -131,25 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     })
   }
-  // chart m2
 
-  // async function beerForChart() {
-  //     const response = await fetch(API_URL_PUSH);
-  //     const datapoints = await response.json();
-  //     console.log(datapoints);
-
-  //     return datapoints; //
-  // }
-
-  // beerForChart().then(datapoints => {
-
-  //   for(var i = 0; i < datapoints.length; i++) {
-  //   const year = datapoints[i].first_brewed.map(datapoints[i].name
-  //   )
-  //   console.log(year);
-
-  //   }
-  // });
 
 //beer match
 const beerFest = document.getElementById("beerFest");
@@ -180,13 +179,10 @@ const loadBeers = async () => {
     dataBM.forEach((bottle) => {
       const foodPair = bottle.food_pairing;
       slicedFood = foodPair.slice(',');
-
-
     });
     // console.log(dataBM);
 
 };
-
 
   const beerMenu = (beers) => {
     const beerCon = beers.map((beer) => {
