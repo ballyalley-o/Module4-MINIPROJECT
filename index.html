@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Cheers!</title>
+  </head>
+  <body class="background">
+    <header>
+    <nav>
+        <ul class="mobile-nav">
+            <li data-tab-target="#home" class="tab">Home</li>
+            <li data-tab-target="#history" class="tab">History</li>
+            <li data-tab-target="#beerMatch" class="tab">Beer Match!</li>
+        </ul>
+        <button class="hamburger">
+        <div class="bar"></div>
+    </button>
+    </nav>
+</header>
+
+<div class="tab-content">
+
+  <!-- HOME -->
+     <div id="home" class="active" data-tab-content>
+         <div class="container">
+            <h1>Cheers!</h1>
+             <a href="#"><span class="alcShow" alt="Alchohol Level" id="tooltip"></span></a>
+                <div class="beerton">
+                 <img class="beerImg" src="img/beer.png">
+
+                </div>
+
+             <h3 class="randomizer">Grab your beer!</h3>
+             <p class="desc"></p>
+             <div class="infoBeer"> </div>
+        </div>
+     </div>
+
+ <!-- HISTORY -->
+    <div id="history" data-tab-content>
+            <h1> Beers est.</h1>
+            <p class="history-desc"> the Story of your favorite beer </p>
+
+<canvas id="chart" width="600" height="200"></canvas>
+    </div>
+
+
+<!-- BEERPOST -->
+    <div id="beerMatch" data-tab-content>
+            <h1> Beer match?</h1>
+            <p class="beerMatchDesc">Find out your beer's better match.</p>
+      <div id="searchWrap">
+        <input type="text"
+                name="beerSearch"
+                id="beerSearch"
+                placeholder="search your beer here"
+        />
+      </div>
+      <ul id="beerFest"></ul>
+
+
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+
+    <script src="app.js"></script>
+
+
+  </body>
+
+  <footer class="footer">All rights reserved</footer>
+</html>
