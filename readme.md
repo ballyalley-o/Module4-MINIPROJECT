@@ -63,7 +63,3 @@ Font-awesome – via Download, ‘Why?’ – for some professional/ready made i
 
 
 
-
-
--its being my habit to separtate css and on a different file, because, I love playing around with ths stylesheet that its making the document ugly.
-
