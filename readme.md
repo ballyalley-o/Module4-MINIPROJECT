@@ -59,6 +59,11 @@ Font-awesome – via Download, ‘Why?’ – for some professional/ready made i
 
 ## ▪ How might you extend the features of your application in future?
 
-- Likely, will use this as a practice application.
+- Likely, will make it responsive and ffix the tooltip functions.
 
+
+
+
+
+-its being my habit to separtate css and on a different file, because, I love playing around with ths stylesheet that its making the document ugly.
 
