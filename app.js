@@ -16,6 +16,7 @@ tabs.forEach(tab => {
     })
 })
 
+//this is a pretty huge function, probably better to break it up more
 document.addEventListener("DOMContentLoaded", () => {
   const grabBeerBtn = document.querySelector(".beerton");
   const randomBeer = document.querySelector(".randomizer");
@@ -90,15 +91,19 @@ document.addEventListener("DOMContentLoaded", () => {
         plugins: {
           tooltip: {
             callbacks: {
-              label: function() {
-                var label = nameArr;
-                for (var i = 0; i < nameArr.length; i++) {
-                return label[i];
+              label: function(ctx) {
+                //this loops through all the names and always returns after the first one
+                //var label = nameArr;
+                //for (var i = 0; i < nameArr.length; i++) {
+                //return label[i];
+
+                //this grabs the index of the current graph item and matches it up with the name array (assumes both are in the same order)
+                let label = nameArr[ctx.dataIndex];
+                return label;
               }
             },
           },
         },
-      },
         scales: {
           x: {
             type: "time",

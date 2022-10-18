@@ -204,7 +204,7 @@ nav {
     background-color: black;
     margin: 6px 0px;
     -webkit-transition: 0.4s;
-    transition: 0.4s
+    transition: 0.4s;
     z-index: 1000000;
 }
 
@@ -387,6 +387,11 @@ form {
 
 }
 
+@media (max-width: 1024px) {
+    #beerFest { grid-template-columns: repeat(1, 1fr) }
+}
+
+
 .beer {
     list-style-type: none;
     background-color: #F2D8C2;
@@ -410,7 +415,7 @@ form {
     padding: 20px;
     margin: 0;
     margin-top: -18px;
-    font-size: 1.6rem;
+    font-size: 1.4rem; /* smaller font allows the grid to fit without causing horizontal scrolling */
     justify-content: right;
     text-align: right;
     bottom: 0px;
@@ -418,7 +423,7 @@ form {
 }
 
 .beer, h2 {
-    font-size: 3rem;
+    font-size: 2rem; /* smaller font allows the grid to fit without causing horizontal scrolling */
     margin-bottom: 0px;
     text-align: left;
 }
